@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Escape Room: The Communication Breakdown</title>
+    <style>
+        body { font-family: Arial, sans-serif; text-align: center; padding: 20px; background-color: #f4f4f4; }
+        .container { max-width: 700px; margin: auto; background: white; padding: 20px; border-radius: 10px; box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1); }
+        .level { display: none; }
+        .visible { display: block; }
+        button { padding: 10px 15px; margin: 10px; border: none; cursor: pointer; border-radius: 5px; font-size: 16px; background-color: #007bff; color: white; margin-top: 10px; }
+        button:hover { background-color: #0056b3; }
+        img { width: 120px; margin: 10px 0; }
+        .celebration { display: none; font-size: 20px; color: green; margin-top: 10px; }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h2>Escape Room: The Communication Breakdown</h2>
+        <p><strong>Scenario:</strong> A client was given conflicting information from two different departments, 
+        leading to confusion and frustration. Your task is to **identify communication errors** along the way 
+        and unlock the skills needed to escape!</p>
+
+        <div id="level1" class="level visible">
+            <h3>🔒 Level 1: The Meeting Dilemma</h3>
+            <img src="https://cdn-icons-png.flaticon.com/512/2913/2913559.png" alt="Locked Door">
+            <p>The project kickoff meeting was disorganized, running over time, and failing to clarify team responsibilities. 
+            What could have improved this meeting?</p>
+            <button onclick="nextLevel(1, 'a')">Let everyone voice opinions freely without structure</button>
+            <button onclick="nextLevel(1, 'b')">Set a clear agenda, time limits, and action items</button>
+            <p id="response1"></p>
+            <p id="celebration1" class="celebration">🎉 Correct! You've unlocked the next level! 🎉</p>
+        </div>
+
+        <div id="level2" class="level">
+            <h3>🔒 Level 2: Internal Misalignment</h3>
+            <img src="https://cdn-icons-png.flaticon.com/512/2913/2913559.png" alt="Locked Door">
+            <p>Different teams sent different versions of product details to the client. 
+            What could have prevented this?</p>
+            <button onclick="nextLevel(2, 'a')">Allow each department to communicate with clients independently</button>
+            <button onclick="nextLevel(2, 'b')">Create an aligned internal communication plan</button>
+            <p id="response2"></p>
+            <p id="celebration2" class="celebration">🎉 Correct! You're one step closer to escaping! 🎉</p>
+        </div>
+
+        <div id="level3" class="level">
+            <h3>🔒 Level 3: Feedback Failure</h3>
+            <img src="https://cdn-icons-png.flaticon.com/512/2913/2913559.png" alt="Locked Door">
+            <p>A team member made an error in the client presentation but was unaware of the mistake. 
+            How should this be addressed?</p>
+            <button onclick="nextLevel(3, 'a')">Publicly point out their mistake in the next meeting</button>
+            <button onclick="nextLevel(3, 'b')">Use the SBI (Situation-Behavior-Impact) method for private feedback</button>
+            <p id="response3"></p>
+            <p id="celebration3" class="celebration">🎉 Great job! You’re about to escape! 🎉</p>
+        </div>
+
+        <div id="winScreen" class="level">
+            <h3>🚪 Congratulations, You Escaped! 🎉</h3>
+            <img src="https://cdn-icons-png.flaticon.com/512/944/944927.png" alt="Person Walking Out Door">
+            <p>You've successfully identified key communication breakdowns and solved the challenge! <br>
+            This **Communication Skills Program** will help strengthen your skills in: <br>
+            ✅ Running **efficient meetings** <br>
+            ✅ Maintaining **aligned internal communication** <br>
+            ✅ Giving **constructive feedback** <br>
+            Get ready to level up your communication skills in the training ahead!</p>
+        </div>
+    </div>
+
+    <script>
+        function nextLevel(step, choice) {
+            if (step === 1) {
+                document.getElementById("response1").innerHTML = choice === 'b' ? 
+                "✔ A structured agenda improves efficiency and accountability." : 
+                "❌ Without structure, meetings can waste time and cause confusion.";
+                if (choice === 'b') {
+                    document.getElementById("celebration1").style.display = "block";
+                    setTimeout(() => {
+                        document.getElementById("level1").classList.remove("visible");
+                        document.getElementById("level2").classList.add("visible");
+                    }, 1500);
+                }
+            } 
+            else if (step === 2) {
+                document.getElementById("response2").innerHTML = choice === 'b' ? 
+                "✔ Internal alignment prevents mixed messaging to clients." : 
+                "❌ Uncoordinated communication creates client confusion.";
+                if (choice === 'b') {
+                    document.getElementById("celebration2").style.display = "block";
+                    setTimeout(() => {
+                        document.getElementById("level2").classList.remove("visible");
+                        document.getElementById("level3").classList.add("visible");
+                    }, 1500);
+                }
+            } 
+            else if (step === 3) {
+                document.getElementById("response3").innerHTML = choice === 'b' ? 
+                "✔ Constructive feedback fosters growth and accountability." : 
+                "❌ Public criticism can harm morale and productivity.";
+                if (choice === 'b') {
+                    document.getElementById("celebration3").style.display = "block";
+                    setTimeout(() => {
+                        document.getElementById("level3").classList.remove("visible");
+                        document.getElementById("winScreen").classList.add("visible");
+                    }, 1500);
+                }
+            }
+        }
+    </script>
+
+</body>
+</html>
+
+
